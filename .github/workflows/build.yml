@@ -41,8 +41,8 @@ jobs:
         with:
           context: application/.
           file: application/Dockerfile
+          push: true
+          tags: ghcr.io/wolfwolker/urban-take-home-test-node-app:latest
           # push: ${{ github.ref_type == 'tag' }}
           # tags: ${{ steps.meta.outputs.tags }}
           # labels: ${{ steps.meta.outputs.labels }}
-          push: true
-          tags: wolfwolker/urban-take-home-test-node-app:latest
