@@ -45,4 +45,4 @@ jobs:
           # tags: ${{ steps.meta.outputs.tags }}
           # labels: ${{ steps.meta.outputs.labels }}
           push: true
-          tags: wolfwolker/urban-take-home-test:latest
+          tags: wolfwolker/urban-take-home-test-node-app:latest
