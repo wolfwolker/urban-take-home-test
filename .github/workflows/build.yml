@@ -31,20 +31,28 @@ jobs:
       #       type=semver,pattern={{version}}
 
       - name: Login to image repository
-        # if: github.ref_type == 'tag'
         uses: docker/login-action@v2
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push
+
+      - name: Build and push latest
         uses: docker/build-push-action@v3
         with:
           context: application/.
-          # file: application/Dockerfile
           push: true
-          tags: "ghcr.io/wolfwolker/urban-take-home-test-node-app:${{ github.ref_type == 'tag' ? github.ref_name : 'latest' }}"
+          tags: ghcr.io/wolfwolker/urban-take-home-test-node-app:latest
+          # file: application/Dockerfile
           # push: ${{ github.ref_type == 'tag' }}
           # tags: ${{ steps.meta.outputs.tags }}
           # labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Build and push tag
+        uses: docker/build-push-action@v3
+        if: github.ref_type == 'tag'
+        with:
+          context: application/.
+          push: true
+          tags: ghcr.io/wolfwolker/urban-take-home-test-node-app:${{ github.ref_name }}
