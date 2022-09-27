@@ -1,0 +1,30 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: urban-take-home-test-node-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: urban-take-home-test-node-app
+  template:
+    metadata:
+      labels:
+        app: urban-take-home-test-node-app
+    spec:
+      containers:
+        - name: urban-take-home-test-node-app
+          image: ghcr.io/wolfwolker/urban-take-home-test-node-app:latest
+          ports:
+            - containerPort: 3000
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 200m
+              memory: 256Mi
+          # env:
+          #   - name: PORT
+          #     value: "3000"
