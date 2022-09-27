@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - master
+    paths:
+      - application/**
   #   tags:
   #     - "v*-hello-world"
   # pull_request:
@@ -40,9 +42,9 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: application/.
-          file: application/Dockerfile
+          # file: application/Dockerfile
           push: true
-          tags: ghcr.io/wolfwolker/urban-take-home-test-node-app:latest
+          tags: "ghcr.io/wolfwolker/urban-take-home-test-node-app:${{ github.ref_type == 'tag' ? github.ref_name : 'latest' }}"
           # push: ${{ github.ref_type == 'tag' }}
           # tags: ${{ steps.meta.outputs.tags }}
           # labels: ${{ steps.meta.outputs.labels }}
