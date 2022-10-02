@@ -26,10 +26,10 @@ spec:
           resources:
             requests:
               cpu: 100m
-              memory: 128Mi
+              memory: 32Mi
             limits:
               cpu: 200m
-              memory: 256Mi
+              memory: 128Mi
           # env:
           #   - name: PORT
           #     value: "3000"
