@@ -2,4 +2,4 @@
 
 * [Page 1.2](README.md)
 * [Page x](another.md)
-* [Page 2](foo.md)
+* [Page 2](page-2.md)
